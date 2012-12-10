@@ -1,11 +1,14 @@
 class Frame {
 
-  int sides = 20; // how many sides the cylinders have
-  boolean joints = false; // if true, spheres will be drawn at joints
-  boolean lines = true; // if true, lines will connect joints
-  boolean links = false; // if true, cylinders will connect joints
+  boolean joints = true; // if true, spheres will be drawn at joints
+  int radius = 2; // default radius for all joints
 
-  // joint centers
+  boolean lines = true; // if true, lines will connect joints
+
+  boolean links = false; // if true, cylinders will connect joints
+  int sides = 20; // how many sides the cylinders have 
+
+  // joint centers      
   PVector joint0_0;
   PVector joint1_1;    
   PVector joint2_2;
@@ -172,7 +175,6 @@ class Frame {
   // create spheres at each major joint
   void drawJoint(PVector joint, int radius) {
     fill(#D01DDE);  // set color for joint centers and segments
-    sphereDetail(60);
     noStroke();
     pushMatrix();
     translate(joint.x, joint.y);
@@ -186,43 +188,44 @@ class Frame {
 
   void draw() {
     if (joints) {
-      drawJoint(joint0_0, 2);
-      drawJoint(joint1_1, 2);
-      drawJoint(joint2_2, 2);
-      drawJoint(joint3_3, 2);
-      drawJoint(joint4_6, 2);
-      drawJoint(joint5_8, 2);
-      drawJoint(joint6_10, 2);
-      drawJoint(joint7_11, 2);
-      drawJoint(joint8_9, 2);
-      drawJoint(joint9_7, 2);
-      drawJoint(joint10_12, 2);
-      drawJoint(joint11_13, 2);
-      drawJoint(joint12_14, 2);
-      drawJoint(joint13_17, 2);
-      drawJoint(joint14_19, 2);
-      drawJoint(joint15_21, 2);
-      drawJoint(joint16_22, 2);
-      drawJoint(joint17_20, 2);
-      drawJoint(joint18_18, 2);
-      drawJoint(joint19_25, 2);
-      drawJoint(joint20_26, 2);
-      drawJoint(joint21_27, 2);
-      drawJoint(joint22_28, 2);
-      drawJoint(joint23_29, 2);
-      drawJoint(joint24_30, 2);
-      drawJoint(joint25_31, 2);
-      drawJoint(joint26_32, 2);
-      drawJoint(joint27_33, 2);
-      drawJoint(joint28_34, 2);
-      drawJoint(joint29_35, 2);
-      drawJoint(joint30_36, 2);
-      drawJoint(joint31_37, 2);
-      drawJoint(joint32_38, 2);
-      drawJoint(joint33_39, 2);
-      drawJoint(joint34_40, 2);
-      drawJoint(joint35_44, 2);
-      drawJoint(joint36_45, 2);
+      //scale(0.25);
+      drawJoint(joint0_0, radius);
+      drawJoint(joint1_1, radius);
+      drawJoint(joint2_2, radius);
+      drawJoint(joint3_3, radius);
+      drawJoint(joint4_6, radius);
+      drawJoint(joint5_8, radius);
+      drawJoint(joint6_10, radius);
+      drawJoint(joint7_11, radius);
+      drawJoint(joint8_9, radius);
+      drawJoint(joint9_7, radius);
+      drawJoint(joint10_12, radius);
+      drawJoint(joint11_13, radius);
+      drawJoint(joint12_14, radius);
+      drawJoint(joint13_17, radius);
+      drawJoint(joint14_19, radius);
+      drawJoint(joint15_21, radius);
+      drawJoint(joint16_22, radius);
+      drawJoint(joint17_20, radius);
+      drawJoint(joint18_18, radius);
+      drawJoint(joint19_25, radius);
+      drawJoint(joint20_26, radius);
+      drawJoint(joint21_27, radius);
+      drawJoint(joint22_28, radius);
+      drawJoint(joint23_29, radius);
+      drawJoint(joint24_30, radius);
+      drawJoint(joint25_31, radius);
+      drawJoint(joint26_32, radius);
+      drawJoint(joint27_33, radius);
+      drawJoint(joint28_34, radius);
+      drawJoint(joint29_35, radius);
+      drawJoint(joint30_36, radius);
+      drawJoint(joint31_37, radius);
+      drawJoint(joint32_38, radius);
+      drawJoint(joint33_39, radius);
+      drawJoint(joint34_40, radius);
+      drawJoint(joint35_44, radius);
+      drawJoint(joint36_45, radius);
     }
 
     if (lines) {

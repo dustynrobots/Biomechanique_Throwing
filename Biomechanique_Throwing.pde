@@ -39,6 +39,7 @@ void draw() {
     rotation = map(mouseX, 0, width, -PI, PI);
     rotateY(rotation);
   }
+
   scale(100);  // data comes in as pixels, scale to make visible on screen
 
   frames[currentFrame].draw();  // this is where the magic happens

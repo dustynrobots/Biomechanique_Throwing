@@ -29,12 +29,10 @@ class Segment {
   }
 
   void display() {
-    pushMatrix();
     translate(joint1.x, joint1.y);
     rotate(angle, axis.x, axis.y, axis.z);
     noStroke();
     cylinder(r1, r2, segmentLength, sides);
-    popMatrix();
   }
 
   // based on the "drawCylinder" code example from pg 540 of Processing by Reas & Fry
