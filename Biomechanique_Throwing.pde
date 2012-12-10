@@ -25,18 +25,21 @@ void draw() {
   background(255);  // redraw a white background on each loop
   lights();
 
-  // without these next 2 lines, dude looks weird
-  translate(100, height, 0);
-  rotateX(PI);
-  //rotateY(PI/2);
-  //translate(100, 100, 0);
-  
+  // without these next lines, figure looks like it's throwing while standing on the ceiling
+  scale(1, 1, -1);  // without this scaling, figure looks left handed (should be right handed)
+  translate(0, height, 0);  // move origin to bottom left of screen
+  rotateX(PI); // flip y axis up, but z out
+  rotateY(PI); // rotates x axis in, z axis to right
+  // at this point origin is at bottom left, y is up, z it to right, and x is into screen
+  translate(-100, 100, 0);  // translate so we can see the figure clearly
+  rotateY(-PI/5); // rotate just a little to see the figure better
+
   // rotate to see 3D when mousePressed
   if (mousePressed) {
     rotation = map(mouseX, 0, width, -PI, PI);
     rotateY(rotation);
   }
-    scale(100);  // data comes in as pixels, scale to make visible on screen
+  scale(100);  // data comes in as pixels, scale to make visible on screen
 
   frames[currentFrame].draw();  // this is where the magic happens
 
