@@ -29,10 +29,13 @@ class Segment {
   }
 
   void display() {
-    translate(joint1.x, joint1.y);
-    rotate(angle, axis.x, axis.y, axis.z);
+    fill(#FFC400);  // set color for segments
     noStroke();
+    pushMatrix();
+    translate(joint1.x, joint1.y, joint1.z);
+    rotate(angle, axis.x, axis.y, axis.z);
     cylinder(r1, r2, segmentLength, sides);
+    popMatrix();
   }
 
   // based on the "drawCylinder" code example from pg 540 of Processing by Reas & Fry
@@ -42,7 +45,7 @@ class Segment {
 
       //draw body
     beginShape(QUAD_STRIP);  // connects all the sides
-    for (int i = 0; i < sides; i++) {
+    for (int i = 0; i < sides + 1; i++) {
       vertex(r1 * cos(i * angle), 0, r1 * sin(i * angle));
       vertex(r2 * cos(i * angle), h, r2 * sin(i * angle));
     }
