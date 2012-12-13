@@ -40,6 +40,7 @@ class Frame {
   PVector joint34_40;
   PVector joint35_44;
   PVector joint36_45;
+  PVector joint37; // "fake" joint between shoulder to define top of torso
 
   // links between joint centers
   Segment link0_1;
@@ -81,6 +82,7 @@ class Frame {
   Segment link34_35;
   Segment link35_36;
   Segment link36_34;
+  Segment link0_37; // torso
 
   Frame(float dataRow[]) {
     // named as order#_actual# in csv file.  assign triplets to specific joints.
@@ -121,6 +123,7 @@ class Frame {
     joint34_40 = new PVector(dataRow[104], dataRow[105], dataRow[106]);
     joint35_44 = new PVector(dataRow[107], dataRow[108], dataRow[109]);
     joint36_45 = new PVector(dataRow[110], dataRow[111], dataRow[112]);
+    joint37 = new PVector((joint24_30.x + joint29_35.x)/2, (joint24_30.y + joint29_35.y)/2, (joint24_30.z + joint29_35.z)/2);
 
     // named for order 
     link0_1 = new Segment(joint0_0, joint1_1, 2, 2, sides);  // right leg
@@ -162,6 +165,7 @@ class Frame {
     link34_35 = new Segment(joint34_40, joint35_44, 2, 2, sides);
     link35_36 = new Segment(joint35_44, joint36_45, 2, 2, sides);
     link36_34 = new Segment(joint36_45, joint34_40, 2, 2, sides);
+    link0_37 = new Segment(joint0_0, joint37, 15, 15, sides); // torso
   }
 
   // create spheres at each major joint
@@ -183,7 +187,7 @@ class Frame {
   void displayJoints() {
     int radius = 2; // default radius for all joints
     drawJoint(joint0_0, radius);
-    drawJoint(joint1_1, radius);
+    drawJoint(joint1_1, 10); // right hip
     drawJoint(joint2_2, 7);
     drawJoint(joint3_3, radius);
     drawJoint(joint4_6, radius);
@@ -192,7 +196,7 @@ class Frame {
     drawJoint(joint7_11, radius);
     drawJoint(joint8_9, radius);
     drawJoint(joint9_7, radius);
-    drawJoint(joint10_12, radius);
+    drawJoint(joint10_12, 10);  // left hip
     drawJoint(joint11_13, 7);
     drawJoint(joint12_14, radius);
     drawJoint(joint13_17, radius);
@@ -206,16 +210,16 @@ class Frame {
     drawJoint(joint21_27, radius);
     drawJoint(joint22_28, radius);
     drawJoint(joint23_29, radius);
-    drawJoint(joint24_30, radius);
-    drawJoint(joint25_31, 5);
+    drawJoint(joint24_30, 7);  // right shoulder
+    drawJoint(joint25_31, 5);  // right elbow
     drawJoint(joint26_32, radius);
     drawJoint(joint27_33, radius);
     drawJoint(joint28_34, radius);
-    drawJoint(joint29_35, radius);
-    drawJoint(joint30_36, 5);
+    drawJoint(joint29_35, 7);  // left shoulder
+    drawJoint(joint30_36, 5);  // left elbow
     drawJoint(joint31_37, radius);
     drawJoint(joint32_38, radius);
-    drawJoint(joint33_39, radius);
+    drawJoint(joint33_39, 7);
     drawJoint(joint34_40, radius);
     drawJoint(joint35_44, radius);
     drawJoint(joint36_45, radius);
@@ -303,5 +307,6 @@ class Frame {
     link34_35.display();
     link35_36.display();
     link36_34.display();
+    link0_37.display(); //torso
   }
 }
